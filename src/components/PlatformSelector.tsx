@@ -1,19 +1,7 @@
 import React from "react";
 import usePlatforms from "../hooks/usePlatforms";
 
-import {
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
-  MenuItemOption,
-  MenuGroup,
-  MenuOptionGroup,
-  MenuDivider,
-  Button,
-  Text,
-  Box,
-} from "@chakra-ui/react";
+import { Menu, MenuButton, MenuList, MenuItem, Button } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { Platform } from "../hooks/useGames";
 
