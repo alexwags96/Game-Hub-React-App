@@ -4,7 +4,7 @@ import useData from "./useData";
 
 export interface Platform{
     id: number;
-    name: string;
+    name: string ;
     slug:string;
 }
 
@@ -26,7 +26,7 @@ export interface Game {
 const useGames=(gameQuery:GameQuery)=>useData<Game>('/games',{
   params:{
     genres:gameQuery.genre?.id,
-    parent_platforms:gameQuery.platform?.id,
+    platforms:gameQuery.platform?.id,
     ordering:gameQuery.sortOrder,
     search:gameQuery.searchText,
   }},
