@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosRequestConfig } from "axios";
 import { FetchResponse } from "../hooks/useData";
 
 
@@ -11,12 +11,12 @@ export const ApiClient= axios.create({
 
 export class APIClient<T> {
 
-    constructor(public endpoint:string){
+    constructor(public endpoint:string,){
 
     }
 
-    getAll=()=>{
-      return  ApiClient.get<FetchResponse<T>>(this.endpoint)
+    getAll=(config:AxiosRequestConfig)=>{
+      return  ApiClient.get<FetchResponse<T>>(this.endpoint,config)
         .then(res=>res.data.results)
     }
 

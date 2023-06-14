@@ -1,14 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
 import genres from '../data/genres'
-import useData from './useData';
-import { APIClient } from '../services/api-client';
-import genreService from '../services/genreService';
+import genreService, { Genre } from '../services/genreService';
 
-export interface Genre{
-    id:number;
-    name:string;
-    image_background:string;
-}
+
 
 
 

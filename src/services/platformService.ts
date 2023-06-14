@@ -1,8 +1,11 @@
-import { Platform } from "../hooks/useGames";
 import { APIClient } from "./api-client";
 
 
-
+export interface Platform{
+    id: number;
+    name: string ;
+    slug:string;
+}
   
 
 

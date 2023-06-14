@@ -1,7 +1,10 @@
-import { Genre } from "../hooks/useGenres";
 import { APIClient } from "./api-client";
 
-
+export interface Genre{
+    id:number;
+    name:string;
+    image_background:string;
+}
 
   
 
