@@ -17,13 +17,13 @@ export class APIClient<T> {
 
     getAll=(config:AxiosRequestConfig)=>{
       return  ApiClient.get<FetchResponse<T>>(this.endpoint,config)
-        .then(res=>res.data.results)
-    }
-
-    post=(data:T)=>{
-       return ApiClient.post<T>(this.endpoint,data)
         .then(res=>res.data)
     }
+
+    // post=(data:T)=>{
+    //    return ApiClient.post<T>(this.endpoint,data)
+    //     .then(res=>res.data)
+    // }
 }
 
 export default ApiClient;
