@@ -38,7 +38,7 @@ const GameGrid = ({ gameQuery }: Props) => {
       <InfiniteScroll
         dataLength={data?.pages?.length || 1} //This is important field to render the next data
         next={fetchNextPage}
-        hasMore={hasNextPage}
+        hasMore={hasNextPage || true}
         loader={
           <Box textAlign={"center"}>
             <Button marginY={5} justifyContent={"space-between"}>
