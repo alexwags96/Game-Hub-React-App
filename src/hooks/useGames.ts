@@ -36,6 +36,7 @@ const useGames=(gameQuery:GameQuery)=>useInfiniteQuery<FetchResponse<Game>, Erro
     ordering:gameQuery.sortOrder,
     search:gameQuery.searchText,
     page: pageParam,
+    page_size: 20,
     }
   }),
   
