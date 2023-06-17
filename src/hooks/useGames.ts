@@ -3,6 +3,7 @@ import { Platform } from "../services/platformService";
 import gameService from "../services/gameService";
 import { Genre } from "../services/genreService";
 import { FetchResponse } from "./useData";
+import ms from "ms";
 
 
 
@@ -43,7 +44,7 @@ const useGames=(gameQuery:GameQuery)=>useInfiniteQuery<FetchResponse<Game>, Erro
   
     
 
-  staleTime: 24*60*60*1000,
+  staleTime: ms('24'),
   keepPreviousData:true,
         getNextPageParam:(lastPage,allPages)=>{
             return lastPage.next? allPages.length+1:undefined;}
