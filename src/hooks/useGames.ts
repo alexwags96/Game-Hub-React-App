@@ -1,9 +1,9 @@
-import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
+import { useInfiniteQuery} from "@tanstack/react-query";
 import { Platform } from "../services/platformService";
 import gameService from "../services/gameService";
-import { Genre } from "../services/genreService";
 import { FetchResponse } from "./useData";
 import ms from "ms";
+import useGameQueryStore from "../store";
 
 
 
@@ -17,38 +17,36 @@ export interface Game {
     rating_top: number;
   }
 
-  export interface GameQuery {
-    
-    genreId?:number;
-    platformId?: number;
-    sortOrder: string;
-    searchText: string;
   
-  }
   
  
  
 
-const useGames=(gameQuery:GameQuery)=>useInfiniteQuery<FetchResponse<Game>, Error>({
-  queryKey: ['games',gameQuery],
-  queryFn:({pageParam=1})=> gameService.getAll({
-    params:{
-      genres:gameQuery.genreId,
-  parent_platforms:gameQuery.platformId,
-    ordering:gameQuery.sortOrder,
-    search:gameQuery.searchText,
-    page: pageParam,
-    page_size: 20,
-    }
-  }),
+const useGames=()=>{
+ const gameQuery = useGameQueryStore(s=>s.gameQuery)
+  return useInfiniteQuery<FetchResponse<Game>, Error>({
   
+    queryKey: ['games',gameQuery],
+    queryFn:({pageParam=1})=> gameService.getAll({
+      params:{
+        genres:gameQuery.genreId,
+    parent_platforms:gameQuery.platformId,
+      ordering:gameQuery.sortOrder,
+      search:gameQuery.searchText,
+      page: pageParam,
+      page_size: 20,
+      }
+    }),
     
+      
+  
+    staleTime: ms('24'),
+    keepPreviousData:true,
+          getNextPageParam:(lastPage,allPages)=>{
+              return lastPage.next? allPages.length+1:undefined;}
+  });
+}
 
-  staleTime: ms('24'),
-  keepPreviousData:true,
-        getNextPageParam:(lastPage,allPages)=>{
-            return lastPage.next? allPages.length+1:undefined;}
-});
  
 
 export default useGames;
