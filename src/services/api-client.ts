@@ -18,7 +18,12 @@ export class APIClient<T> {
     getAll=(config:AxiosRequestConfig)=>{
       return  ApiClient.get<FetchResponse<T>>(this.endpoint,config)
         .then(res=>res.data)
-    }
+    };
+
+    get=(id:number|string)=>{
+        return ApiClient.get<T>(this.endpoint+'/'+ id)
+    .then(res=>res.data)
+};
 
     // post=(data:T)=>{
     //    return ApiClient.post<T>(this.endpoint,data)

@@ -12,11 +12,10 @@ import GameCardSkeleton from "./GameCardSkeleton";
 import GameCardContainer from "./GameCardContainer";
 import React from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
-import useGameQueryStore from "../store";
 
 const GameGrid = () => {
   const page_size = 2;
-  const { gameQuery } = useGameQueryStore();
+
   const {
     data,
     error,
@@ -63,7 +62,11 @@ const GameGrid = () => {
         // }
         // below props only if you need pull down functionality
       >
-        <SimpleGrid columns={{ sm: 1, md: 2, lg: 3, xl: 4 }} spacing={6}>
+        <SimpleGrid
+          margin={3}
+          columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
+          spacing={6}
+        >
           {isLoading &&
             skeletons.map((skeleton) => (
               <GameCardContainer key={skeleton}>
