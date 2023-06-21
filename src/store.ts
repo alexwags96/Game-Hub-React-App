@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { Platform } from "./entities/Platform";
 
  interface GameQuery {
     
@@ -16,6 +17,12 @@ interface GameQueryStore{
     setPlatformId:(platformId:number)=>void;
     setSortOrder:(sortOrder:string)=>void;
 }
+
+
+
+
+
+
 
 const useGameQueryStore=create<GameQueryStore>(set=>({
     gameQuery:{},
