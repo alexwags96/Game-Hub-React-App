@@ -34,30 +34,34 @@ const GameCard = ({ game }: Props) => {
   return (
     <>
       <Card>
-        {/* whileHover={{
+        <Link to={`/games/${game.slug}`}>
+          {/* whileHover={{
             scale: 1.1,
             transition: { duration: 1 },
             cursor: "pointer",
           }}
           whileTap={{ scale: 0.9 }} */}
 
-        <Image
-          // _hover={{ cursor: "pointer" }}
-          src={getCroppedImageUrl(game.background_image)}
-        />
+          <Image
+            // _hover={{ cursor: "pointer" }}
+            src={getCroppedImageUrl(game.background_image)}
+          />
 
-        <CardBody>
-          <HStack marginBottom={3} justifyContent="space-between">
-            <PlatformIconList
-              platforms={game.parent_platforms?.map(({ platform }) => platform)}
-            />
-            <CriticScore score={game.metacritic} />
-          </HStack>
-          <Heading fontSize={"2xl"}>
-            <Link to={`/games/${game.slug}`}>{game.name}</Link>
-            <Emoji rating={game.rating_top} />
-          </Heading>
-        </CardBody>
+          <CardBody>
+            <HStack marginBottom={3} justifyContent="space-between">
+              <PlatformIconList
+                platforms={game.parent_platforms?.map(
+                  ({ platform }) => platform
+                )}
+              />
+              <CriticScore score={game.metacritic} />
+            </HStack>
+            <Heading fontSize={"2xl"}>
+              {game.name}
+              <Emoji rating={game.rating_top} />
+            </Heading>
+          </CardBody>
+        </Link>
       </Card>
     </>
   );

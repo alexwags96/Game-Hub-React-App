@@ -1,5 +1,4 @@
 import { create } from "zustand";
-import { Platform } from "./entities/Platform";
 
  interface GameQuery {
     
@@ -7,6 +6,7 @@ import { Platform } from "./entities/Platform";
     platformId?: number;
     sortOrder?: string;
     searchText?: string;
+    reset?:'',
   
   }
 
@@ -16,6 +16,8 @@ interface GameQueryStore{
     setGenreId:(genreId:number)=>void;
     setPlatformId:(platformId:number)=>void;
     setSortOrder:(sortOrder:string)=>void;
+    SetReset:(reset:'')=>void;
+   
 }
 
 
@@ -24,12 +26,17 @@ interface GameQueryStore{
 
 
 
+
+
 const useGameQueryStore=create<GameQueryStore>(set=>({
-    gameQuery:{},
+  gameQuery:{},
     setSearchText:(searchText)=>set(()=>({gameQuery:{searchText}})),
     setGenreId:(genreId)=>set(store=>({gameQuery: {...store.gameQuery, genreId}})),
     setPlatformId:(platformId)=>set(store=>({gameQuery: {...store.gameQuery, platformId}})),
-    setSortOrder:(sortOrder)=>set(store=>({gameQuery:{...store.gameQuery, sortOrder}}))
+    setSortOrder:(sortOrder)=>set(store=>({gameQuery:{...store.gameQuery, sortOrder}})),
+    SetReset:(reset)=>set(()=>({gameQuery: {reset}})),
+    
+    
 
 }));
 

@@ -1,3 +1,4 @@
+import { Trailer } from "./Trailer";
 import { Genre } from "./Genre";
 import { Platform } from "./Platform";
 import { Publisher } from "./Publisher";
@@ -17,4 +18,6 @@ export interface Game {
   description_raw: string;
   genres: Genre[];
   publishers: Publisher[];
+  results:Trailer[];
+
 }

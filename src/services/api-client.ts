@@ -1,5 +1,5 @@
 import axios, { AxiosRequestConfig } from "axios";
-import { FetchResponse } from "../hooks/useData";
+import { FetchResponse } from "../entities/FetchResponse";
 
 
 export const ApiClient= axios.create({
@@ -23,6 +23,11 @@ export class APIClient<T> {
     get=(id:number|string)=>{
         return ApiClient.get<T>(this.endpoint+'/'+ id)
     .then(res=>res.data)
+};
+
+getMovies=(id:number|string)=>{
+    return ApiClient.get<T>(this.endpoint+'/'+ id+"/movies")
+.then(res=>res.data)
 };
 
     // post=(data:T)=>{

@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import platformService from '../services/platformService';
 import { Platform } from "../entities/Platform";
-import { FetchResponse } from './useData';
+import { FetchResponse } from "../entities/FetchResponse";
 import ms from 'ms';
 
 

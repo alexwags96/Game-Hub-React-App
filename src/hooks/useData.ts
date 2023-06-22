@@ -1,14 +1,8 @@
 import { useEffect, useState } from "react";
 import apiClient from "../services/api-client";
 import { AxiosRequestConfig, CanceledError } from "axios";
+import { FetchResponse } from "../entities/FetchResponse";
 
-
-
-export interface FetchResponse<T>{
-    count: number;
-    next: string | null;
-    results:T[];
-}
 
 
 const useData =<T> (endpoint:string,requestConfig?:AxiosRequestConfig,deps?:any[])=>{
