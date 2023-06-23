@@ -10,7 +10,12 @@ const NavBar = () => {
   return (
     <HStack padding="10px">
       <Link to={"/"}>
-        <Image src={logo} boxSize="32px" onClick={() => reset("")} />
+        <Image
+          src={logo}
+          boxSize="32px"
+          objectFit={"cover"}
+          onClick={() => reset("")}
+        />
       </Link>
       <SearchInput />
       <ColorModeSwitch />

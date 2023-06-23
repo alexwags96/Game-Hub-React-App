@@ -1,4 +1,4 @@
-import { Heading, SimpleGrid, Spinner, Text } from "@chakra-ui/react";
+import { Box, Heading, SimpleGrid, Spinner, Text } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
 import CriticScore from "../components/CriticScore";
 import DefinitionItem from "../components/DefinitionItem";
@@ -20,11 +20,17 @@ const GameDetailPage = () => {
 
   return (
     <>
-      <Heading>{game.name}</Heading>
-      <ExpandableText>{game.description_raw}</ExpandableText>
-      <GameAttributes game={game} />
-      <GameTrailer gameId={game.id} />
-      <Screenshots gameId={game.id} />
+      <SimpleGrid columns={[1, null, 2]} spacing={2}>
+        <Box>
+          <Heading>{game.name}</Heading>
+          <ExpandableText>{game.description_raw}</ExpandableText>
+          <GameAttributes game={game} />
+        </Box>
+        <Box>
+          <GameTrailer gameId={game.id} />
+          <Screenshots gameId={game.id} />
+        </Box>
+      </SimpleGrid>
     </>
   );
 };
