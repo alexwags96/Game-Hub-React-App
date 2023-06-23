@@ -5,6 +5,7 @@ import DefinitionItem from "../components/DefinitionItem";
 import ExpandableText from "../components/ExpandableText";
 import GameAttributes from "../components/GameAttributes";
 import GameTrailer from "../components/GameTrailer";
+import Screenshots from "../components/Screenshots";
 import useGame from "../hooks/useGame";
 import useTrailers from "../hooks/useTrailers";
 
@@ -16,7 +17,6 @@ const GameDetailPage = () => {
   if (isLoading) return <Spinner />;
 
   if (error || !game) throw error;
-  console.log(game);
 
   return (
     <>
@@ -24,6 +24,7 @@ const GameDetailPage = () => {
       <ExpandableText>{game.description_raw}</ExpandableText>
       <GameAttributes game={game} />
       <GameTrailer gameId={game.id} />
+      <Screenshots gameId={game.id} />
     </>
   );
 };
